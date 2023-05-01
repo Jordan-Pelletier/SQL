@@ -1,0 +1,39 @@
+--Create grocery store database
+
+CREATE TABLE store (id INTEGER PRIMARY KEY, item TEXT, section TEXT, price INTEGER, cost INTEGER);
+
+INSERT INTO store VALUES (1, "bananas", "produce", .69, .25);
+INSERT INTO store VALUES (2, "strawberries", "produce", 3.49, 2.25);
+INSERT INTO store VALUES (3, "cucumbers", "produce", .79, .35);
+INSERT INTO store VALUES (4, "tater tots", "frozen", 3.49, 1.25);
+INSERT INTO store VALUES (5, "meatballs", "frozen", 5.99, 3.09);
+INSERT INTO store VALUES (6, "pizza", "frozen", 5.99, 3.29);
+INSERT INTO store VALUES (7, "milk", "dairy", 1.99, .92);
+INSERT INTO store VALUES (8, "cheese", "dairy", 2.49, 1.05);
+INSERT INTO store VALUES (9, "yogurt", "dairy", 1.59, .80);
+INSERT INTO store VALUES (10, "hot dogs", "meat", 5.49, 3.08);
+INSERT INTO store VALUES (11, "ground beef", "meat", 13.49, 11.08);
+INSERT INTO store VALUES (12, "bologna", "meat", 2.49, 1.18);
+INSERT INTO store VALUES (13, "fruit bars", "breakfast", 3.49, 1.08);
+INSERT INTO store VALUES (14, "cereal", "breakfast", 4.49, 2.28);
+INSERT INTO store VALUES (15, "bagels", "breakfast", 4.99, 1.99);
+
+
+--Display the data ordered by price
+
+SELECT * FROM store
+ORDER BY price desc;
+
+--Display average price of dairy items
+
+SELECT AVG(price) "avg dairy item price"
+FROM store
+where section='dairy'; 
+
+--Display items with highest profit
+
+SELECT item, 
+price, cost, ABS(price - cost) AS profit
+FROM store
+ORDER BY profit DESC
+LIMIT 5;
